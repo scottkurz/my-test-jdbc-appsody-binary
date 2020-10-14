@@ -24,6 +24,14 @@
     </properties>
 
 	<dependencies>
+            <dependency>
+        <groupId>org.eclipse.collections</groupId>
+        <artifactId>eclipse-collections</artifactId>
+        <version>10.1.0</version>
+        <!-- In some ways 'runtime' might seem better, since we're not compiling against this, but we don't really care about avoiding this, just looking to package outside of the WAR. 
+             Could've use this API in a compile-time way to prove the same points.-->
+        <scope>provided</scope>
+    </dependency>
 		<!-- Aggregate of MicroProfile APIs -->
 		<dependency>
 			<groupId>org.eclipse.microprofile</groupId>
