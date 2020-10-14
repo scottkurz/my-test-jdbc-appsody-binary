@@ -5,12 +5,6 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent><!--required parent POM -->
-		<groupId>dev.appsody</groupId>
-		<artifactId>java-openliberty</artifactId>
-		<version>[0.1, 0.2)</version>
-		<relativePath />
-	</parent>
 
 	<groupId>g1</groupId>
 	<artifactId>a1-appsody-war</artifactId>
@@ -18,7 +12,15 @@
 	<packaging>war</packaging>
 
     <properties>
-        <wlp.user.dir>${wlp.install.dir}/usr</wlp.user.dir>
+        <version.maven-war-plugin>3.2.2</version.maven-war-plugin>
+        <version.dockerfile-maven-plugin>1.4.10</version.dockerfile-maven-plugin>
+        <version.maven-surefire-plugin>3.0.0-M1</version.maven-surefire-plugin>
+        <version.maven-failsafe-plugin>3.0.0-M1</version.maven-failsafe-plugin>
+        <http.port>9080</http.port>
+        <https.port>9443</https.port>
+        <app.name>${project.artifactId}</app.name>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
 	<dependencies>
@@ -202,7 +204,7 @@
 							<goal>copy-dependencies</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${wlp.user.dir}/servers/defaultServer/resources</outputDirectory>
+                            <outputDirectory>${project.build.directory}/liberty/wlp/usr/servers/defaultServer/resources</outputDirectory>
 							<overWriteReleases>false</overWriteReleases>
 							<overWriteSnapshots>true</overWriteSnapshots>
 							<excludeTransitive>true</excludeTransitive>
@@ -218,7 +220,7 @@
 							<goal>copy-dependencies</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${wlp.user.dir}/servers/defaultServer/lib/global</outputDirectory>
+							<outputDirectory>${project.build.directory}/liberty/wlp/usr/servers/defaultServer/lib/global</outputDirectory>
 							<overWriteReleases>true</overWriteReleases>
 							<overWriteSnapshots>true</overWriteSnapshots>
 							<includeTypes>jar</includeTypes>
